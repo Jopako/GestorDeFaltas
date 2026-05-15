@@ -105,7 +105,6 @@ export default function App() {
 
   return (
     <div style={{ position: "relative", minHeight: "100vh" }}>
-      {/* Floating nav bar */}
       <div
         style={{
           position: "fixed",
@@ -144,15 +143,16 @@ export default function App() {
               borderRadius: "20px",
               border:
                 versao === v.id
-                  ? `1.5px solid ${v.cor}`
+                  ? `2px solid ${v.cor}`
                   : "1.5px solid rgba(255,255,255,0.12)",
               background: versao === v.id ? v.corBg : "transparent",
               color: versao === v.id ? v.cor : "#94a3b8",
               fontSize: "12px",
-              fontWeight: versao === v.id ? "500" : "400",
+              fontWeight: versao === v.id ? "600" : "400",
               cursor: "pointer",
               whiteSpace: "nowrap",
               transition: "all 0.2s",
+              boxShadow: versao === v.id ? `0 0 12px ${v.cor}22` : "none",
             }}
           >
             {v.titulo}
@@ -178,7 +178,6 @@ export default function App() {
         </button>
       </div>
 
-      {/* Heuristics info panel */}
       {showPanel && (
         <div
           style={{
@@ -320,29 +319,29 @@ export default function App() {
                   ← Versão anterior
                 </button>
               )}
-              {versao < 4 && (
-                <button
-                  onClick={() => setVersao((v) => v + 1)}
-                  style={{
-                    background: info.cor,
-                    border: "none",
-                    borderRadius: "5px",
-                    padding: "5px 16px",
-                    fontSize: "12px",
-                    cursor: "pointer",
-                    color: "#fff",
-                    fontWeight: "500",
-                  }}
-                >
-                  Próxima evolução →
-                </button>
-              )}
+              <button
+                onClick={() => versao < 4 && setVersao((v) => v + 1)}
+                disabled={versao === 4}
+                style={{
+                  background: versao === 4 ? "#e5e7eb" : info.cor,
+                  border: "none",
+                  borderRadius: "5px",
+                  padding: "5px 16px",
+                  fontSize: "12px",
+                  cursor: versao === 4 ? "not-allowed" : "pointer",
+                  color: versao === 4 ? "#9ca3af" : "#fff",
+                  fontWeight: "500",
+                  opacity: versao === 4 ? 0.6 : 1,
+                  transition: "all 0.2s",
+                }}
+              >
+                Próxima evolução →
+              </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Main content — padded to avoid overlap with the fixed topbar */}
       <div style={{ paddingTop: "52px", transition: "padding-top 0.2s" }}>
         <V />
       </div>

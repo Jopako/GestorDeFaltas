@@ -175,9 +175,15 @@ export default function V4() {
                   background: erro ? C.dangerBg : '#fff', outline: 'none',
                 }}
               />
+              
               {erro && (
                 <div style={{ marginTop: '6px', padding: '8px 12px', background: C.dangerBg, border: `1px solid ${C.dangerBorder}`, borderRadius: '5px', fontSize: '12px', color: C.danger }}>
                   ⚠ {erro}
+                </div>
+              )}
+              {!erro && busca.length < 2 && (
+                <div style={{ marginTop: '6px', fontSize: '12px', color: C.muted }}>
+                  Digite ao menos 2 caracteres para sugestões
                 </div>
               )}
               {showSug && sugestoes.length > 0 && (
