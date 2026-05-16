@@ -126,3 +126,5 @@ O que mudou na prática:
 ## Notas
 
 - Este projeto é um **protótipo didático** (dados mockados) para demonstrar heurísticas; não é um sistema integrado real.
+
+
